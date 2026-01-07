@@ -5,8 +5,10 @@
   "name": "Syrox Cheat",
   "description": "Syrox Cheat betapvp Edition",
   "entrypoints": {
-    "main": ["SyroxGui"]
-  },
+  "main": [
+    "com.syrox.SyroxGui"
+  ]
+}
   "mixins": [],
   "depends": {
     "fabricloader": ">=0.14.0",
