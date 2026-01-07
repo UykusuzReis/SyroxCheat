@@ -1,4 +1,4 @@
-name: Syrox Full Build
+name: Syrox Build
 on: [push]
 jobs:
   build:
@@ -10,13 +10,12 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Compile and Jar
+      - name: Build with Gradle
         run: |
-          mkdir -p build/libs
-          javac src/main/java/SyroxGui.java -d .
-          jar cfe build/libs/SyroxCheat.jar SyroxGui *.class
-      - name: Upload result
+          chmod +x gradlew
+          ./gradlew build
+      - name: Upload Jar
         uses: actions/upload-artifact@v4
         with:
-          name: Syrox-Final-Jar
-          path: build/libs/*.jar
+          name: SyroxCheat-Jar
+          path: build/libs/*-dev.jar
