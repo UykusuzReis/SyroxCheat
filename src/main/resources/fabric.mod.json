@@ -4,14 +4,16 @@
   "version": "1.0.0",
   "name": "Syrox Cheat",
   "description": "Syrox Cheat betapvp Edition",
+  "license": "MIT",
+  "environment": "*",
   "entrypoints": {
-  "main": [
-    "com.syrox.SyroxGui"
-  ]
-}
-  "mixins": [],
+    "main": [
+      "com.syrox.SyroxGui"
+    ]
+  },
   "depends": {
     "fabricloader": ">=0.14.0",
-    "minecraft": "~1.20.1"
+    "minecraft": "~1.20.1",
+    "java": ">=17"
   }
 }
