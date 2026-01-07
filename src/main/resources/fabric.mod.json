@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "syroxcheat",
+  "version": "1.0.0",
+  "name": "Syrox Cheat",
+  "description": "Syrox Cheat betapvp Edition",
+  "entrypoints": {
+    "main": ["SyroxGui"]
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.14.0",
+    "minecraft": "~1.20.1"
+  }
+}
