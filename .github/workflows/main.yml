@@ -1,10 +1,12 @@
-name: Syrox 1.21.4 Build
+name: Syrox Build
 on: [push]
 jobs:
   build:
-    - name: Build with Gradle
-        run: gradle build --stacktrace --info
-      
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       - name: Setup Java 21
         uses: actions/setup-java@v4
         with:
@@ -14,13 +16,13 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: 8.11.1 # Wrapper dosyası olmadan doğrudan Gradle kurar
+          gradle-version: 8.11.1
 
       - name: Build with Gradle
         run: gradle build --no-daemon
 
-      - name: Upload Jar
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Syrox-Final-1.21.4
+          name: Syrox-Final-Jar
           path: build/libs/*-dev.jar
