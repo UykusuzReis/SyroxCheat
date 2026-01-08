@@ -3,6 +3,12 @@
   "id": "syroxcheat",
   "version": "1.0.0",
   "name": "Syrox Cheat",
+  "description": "Syrox Cheat for 1.21.4",
+  "authors": ["Syrox"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/syroxcheat/icon.png",
+  "environment": "*",
   "entrypoints": {
     "main": [
       "com.syrox.SyroxGui"
