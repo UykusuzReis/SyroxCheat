@@ -8,25 +8,25 @@ import java.util.*;
 
 public class SyroxGui implements ModInitializer {
     private boolean isPressed = false;
-    private String currentTab = "Player";
     
-    // Tüm Özelliklerin Listesi
+    // Modül ve Ayar Saklayıcıları
     private final Map<String, Boolean> modules = new HashMap<>();
     private final Map<String, Double> settings = new HashMap<>();
 
     @Override
     public void onInitialize() {
-        setupFeatures();
+        initializeAllFeatures();
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player == null) return;
 
+            // Sağ Shift (GLFW_KEY_RIGHT_SHIFT) Kontrolü
             boolean shiftPressed = GLFW.glfwGetKey(client.getWindow().getHandle(), GLFW.GLFW_KEY_RIGHT_SHIFT) == GLFW.GLFW_PRESS;
             
             if (shiftPressed && !isPressed) {
-                // Menü her açıldığında mevcut özellikleri mesaj olarak gösterir
-                client.player.sendMessage(Text.literal("§b[Syrox Cheat] §fAçılıyor..."), false);
-                client.player.sendMessage(Text.literal("§7Sekmeler: Player, Movement, Combat, World, Visual"), false);
+                // Oyuncu mesajı ve renkli bildirimler
+                client.player.sendMessage(Text.literal("§b§l[Syrox Cheat 1.21.4] §fMenü Sistemleri Aktif!"), false);
+                sendCategoryInfo(client);
                 isPressed = true;
             } else if (!shiftPressed) {
                 isPressed = false;
@@ -34,18 +34,33 @@ public class SyroxGui implements ModInitializer {
         });
     }
 
-    private void setupFeatures() {
-        // PLAYER: Auto Clicker, Auto Tool, Auto Gap, Reach, Speed Mine, Auto Eat
-        // COMBAT: Kill Aura (Weapon, Rotate, Fov 1-360, Hit Chance, Range 3-6)
-        // MOVEMENT: Scaffold (Delay 1-10), Flight (Mode), Long Jump, No Slow
-        // WORLD: Ambience, Timer (Speed 1-10)
-        // VISUAL: Fullbright, Esp, Tracer
-        
-        String[] all = {"AutoClicker", "KillAura", "Flight", "Scaffold", "Timer", "Esp"};
-        for(String s : all) modules.put(s, false);
-        
-        settings.put("Fov", 90.0);
-        settings.put("Reach", 3.0);
+    private void initializeAllFeatures() {
+        // COMBAT: KillAura, BowAimbot, Hitboxes (Range: 3.0-6.0, FOV: 1-360)
+        modules.put("KillAura", false);
+        modules.put("BowAimbot", false);
+        modules.put("Hitboxes", false);
+
+        // PLAYER: AutoClicker, AutoTool, AutoGap, Reach, SpeedMine, AutoEat
+        modules.put("AutoClicker", false);
+        modules.put("Reach", false);
+        settings.put("ReachValue", 3.0);
+
+        // MOVEMENT: Scaffold, Flight, LongJump, NoSlow, Velocity, SafeWalk, NoFall
+        modules.put("Flight", false);
+        modules.put("Scaffold", false);
+        modules.put("NoSlow", false);
+
+        // WORLD & VISUAL: Timer, Ambience, Nuker, Fullbright, Esp, Tracer
+        modules.put("Timer", false);
+        modules.put("Fullbright", true);
+        modules.put("Esp", false);
         settings.put("TimerSpeed", 1.0);
+    }
+
+    private void sendCategoryInfo(net.minecraft.client.MinecraftClient client) {
+        client.player.sendMessage(Text.literal("§9> Player: §7AutoClicker, Reach, AutoGap..."), false);
+        client.player.sendMessage(Text.literal("§9> Combat: §7KillAura, Hitboxes..."), false);
+        client.player.sendMessage(Text.literal("§9> Movement: §7Flight, Scaffold, NoSlow..."), false);
+        client.player.sendMessage(Text.literal("§9> Visual: §7Esp, Fullbright, Tracers..."), false);
     }
 }
