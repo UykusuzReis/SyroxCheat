@@ -3,8 +3,6 @@
   "id": "syroxcheat",
   "version": "1.0.0",
   "name": "Syrox Cheat",
-  "authors": ["Syrox"],
-  "environment": "*",
   "entrypoints": {
     "main": [
       "com.syrox.SyroxGui"
