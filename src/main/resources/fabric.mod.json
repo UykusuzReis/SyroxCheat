@@ -3,9 +3,13 @@
   "id": "syroxcheat",
   "version": "1.0.0",
   "name": "Syrox Cheat",
-  "entrypoints": { "main": ["com.syrox.SyroxGui"] },
-  "depends": { 
-    "fabricloader": ">=0.16.0", 
+  "entrypoints": {
+    "main": [
+      "com.syrox.SyroxGui"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
     "minecraft": "1.21.4",
     "java": ">=21"
   }
