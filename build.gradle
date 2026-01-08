@@ -20,5 +20,5 @@ dependencies {
 }
 
 base {
-    archivesName = "Syrox-1214"
+    archivesName = "Syrox-Full-1.21.4"
 }
