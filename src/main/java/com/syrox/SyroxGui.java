@@ -12,7 +12,6 @@ public class SyroxGui implements ModInitializer {
     public void onInitialize() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player == null) return;
-
             if (GLFW.glfwGetKey(client.getWindow().getHandle(), GLFW.GLFW_KEY_RIGHT_SHIFT) == GLFW.GLFW_PRESS) {
                 if (!isPressed) {
                     client.player.sendMessage(Text.literal("§b[Syrox 1.21.4] §aTüm Modüller Hazır!"), false);
@@ -22,9 +21,7 @@ public class SyroxGui implements ModInitializer {
                     client.player.sendMessage(Text.literal("§fVisual: §7Esp, Fullbright, Timer"), false);
                     isPressed = true;
                 }
-            } else {
-                isPressed = false;
-            }
+            } else { isPressed = false; }
         });
     }
 }
