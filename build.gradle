@@ -1,10 +1,11 @@
 plugins {
-    id 'fabric-loom' version '1.7-SNAPSHOT'
+    id 'fabric-loom' version '1.9-SNAPSHOT'
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 repositories {
@@ -17,4 +18,8 @@ dependencies {
     mappings "net.fabricmc:yarn:1.21.4+build.2:v2"
     modImplementation "net.fabricmc:fabric-loader:0.16.9"
     modImplementation "net.fabricmc.fabric-api:fabric-api:0.113.0+1.21.4"
+}
+
+base {
+    archivesName = "Syrox-Final"
 }
